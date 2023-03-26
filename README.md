@@ -29,4 +29,4 @@ npm run build
 ```
 link to GitHub Repository: https://github.com/nikokip20/Cw3-WebApp/
 
-Link to GitHub Pages(directly run): 
+Link to GitHub Pages(directly run): https://nikokip20.github.io/Cw3-WebApp/
