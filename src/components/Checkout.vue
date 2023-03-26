@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Checkout view is working</h2>
+        <h2>Checkout page</h2>
 
         <p>Your total items in cart are: {{ cartItemCount }} </p>
 
@@ -24,7 +24,7 @@
 
             </div>
         </div>
-        <!-- <strong>Name:</strong>
+        <strong>Name:</strong>
             <input type="name" v-model.trim="details.name">
 
             <strong>Surname:</strong>
@@ -34,18 +34,28 @@
             <input type="number" v-model.trim="details.phoneNo">
 
             <strong>Address:</strong>
-            <input type="name" v-model.trim="details.address"> -->
+            <input type="name" v-model.trim="details.address"> 
 
 
 
+            <h3>Order Details:</h3>
+            <p>Name: {{details.name}}</p>
+            <p>Surname: {{details.surname}}</p>
+            <p>PhoneNo: {{details.phoneNO}}</p>
+            <p>Address : {{details.address}}</p>
+            <!--Displaying the data that the user entered-->
+            <button v-on:click="submitForm(details)">Place order</button>
+        </div>
+        <!--End of div for checkout-->
 
-    </div>
+    
+
 </template>
 <script>
 export default {
     name: "Checkout",
 
-    props: ["sortedProducts", "cart"],
+    props: ["sortedProducts", "cart", "details"],
     data() {
         return {
 
@@ -74,7 +84,20 @@ export default {
     
     removeItem: function(product){
         this.$emit("remove-item-event", product);
-    }
+    },
+    submitForm(details) {
+            if (details.phoneNo <= 0) {
+                alert("Please enter a valid phone number");
+            }
+            else if (details.name === "") {
+                alert("Enter a valid name");
+            }
+            else if (details.address === "") {
+                alert("Enter a valid address!");
+            }
+            else {
+                alert("Order confirmed!");
+            }   //with this function we make sure the user fills out the form before cheching out
 
 },
     computed: {
@@ -85,4 +108,5 @@ export default {
 
   
 }   
+}
 </script>

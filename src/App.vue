@@ -6,7 +6,7 @@
 
 
     <main>
-      <component :is="currentView" :sortedProducts="sortedProducts" :cart="cart" @add-item-to-cart="addToCart" @remove-item-event="removeItem"> </component>
+      <component :is="currentView" :sortedProducts="sortedProducts" :cart="cart" @add-item-to-cart="addToCart" @remove-item-event="removeItem" :details="details"> </component>
     </main>
   </div>
 </template>
@@ -27,6 +27,12 @@ export default {
       cart: [],
       products: products,
       currentView: ProductList,
+      details: {
+            name: "",
+            surname: "",
+            address: "",
+            phoneNo: "",
+ }
 
     }
   },
@@ -70,7 +76,9 @@ export default {
     removeItem(products){
       this.removeItemCart(products);
     },  
-    
+    returnDetails(details){
+      return details;
+    }
   },
   computed: {
     cartItemCount: function () {

@@ -27,7 +27,3 @@ npm run dev
 ```sh
 npm run build
 ```
-
-Link to Github Repository: https://github.com/nikokip20/Cw3-WebApp
-
-Link to GitHub Pages : https://nikokip20.github.io/Cw3-WebApp/

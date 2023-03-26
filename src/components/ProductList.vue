@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <h1>Product view is working</h1>
+        <h1>Product page</h1>
 
             <div v-for="product in sortedProducts" class="main">
                
