@@ -6,7 +6,7 @@
 
 
     <main>
-      <component :is="currentView" :sortedProducts="sortedProducts" :cart="cart" @add-item-to-cart="addToCart"> </component>
+      <component :is="currentView" :sortedProducts="sortedProducts" :cart="cart" @add-item-to-cart="addToCart" @remove-item-event="removeItem"> </component>
     </main>
   </div>
 </template>
@@ -16,6 +16,7 @@
 import ProductList from './components/ProductList.vue';
 import Checkout from './components/Checkout.vue';
 import products from "./assets/json/subject.json";
+import style from "./assets/style.css"
 
 export default {
   name: 'app',
@@ -39,13 +40,13 @@ export default {
         this.currentView = ProductList;
       }
     },
-    addToCart(product) {
-      this.cart.push(product.productID);  //adds product to cart array
+    addToCart(products) {
+      this.cart.push(products.productID);  //adds product to cart array
 
 
     },
-    canAddToCart(product) {
-      return product.Space > this.cartCount(product.productID);   //functuion enables and disables the button if product in stock
+    canAddToCart(products) {
+      return products.Space > this.cartCount(products.productID);   //functuion enables and disables the button if product in stock
 
     },
 
@@ -61,6 +62,14 @@ export default {
       return count;//cheching for the item that we are going to add to the cart 
     },
 
+    removeItemCart(products){
+      let i = this.cart.indexOf(products.productID);
+      // remove the item that the index is pointing to
+      this.cart.splice(i,1);
+    },
+    removeItem(products){
+      this.removeItemCart(products);
+    },  
     
   },
   computed: {

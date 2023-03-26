@@ -29,7 +29,7 @@
 </template>
 <script>
 export default{
-    
+    name: "ProductList",
     props:["sortedProducts", "cart"],
     data(){
         return{
@@ -58,10 +58,8 @@ export default{
         },
     addItemToCart: function(product){
         this.$emit("add-item-to-cart", product);
-    },
-    itemleft(product) {
-            return product.Space - this.cartCount(product.productID);
-        },  //we use this funtion to determine the remaining spaces in the product
+    }
+     
 }
 }
 </script>
